@@ -1212,6 +1212,56 @@ body.mode-desktop .modal-sheet {
   margin-top: 2px;
 }
 
+/* Visual Food Portion Cards */
+.portion-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.portion-card {
+  background: var(--bg-muted);
+  border: 2px solid transparent;
+  border-radius: var(--radius-md);
+  padding: 12px 10px;
+  text-align: center;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.portion-card:hover {
+  border-color: var(--border-card);
+}
+
+.portion-card.active {
+  background: var(--primary-light);
+  border-color: var(--primary);
+}
+
+.portion-icon {
+  display: inline-block;
+  color: var(--primary);
+  margin-bottom: 6px;
+}
+
+.portion-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--espresso);
+}
+
+.portion-desc {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.portion-extra {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--primary);
+  margin-top: 4px;
+}
+
 /* Radio Chip Groups (Sugar & Milk) */
 .radio-chips-grid {
   display: flex;

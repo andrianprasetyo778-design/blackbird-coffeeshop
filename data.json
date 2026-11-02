@@ -42,7 +42,7 @@
       "reviews": 94,
       "price": 30000,
       "description": "Perpaduan seimbang espresso premium dengan foam susu tebal bertekstur lembut dan taburan bubuk cokelat.",
-      "image": "https://images.unsplash.com/photo-1572442388796-11668ba67e53?auto=format&fit=crop&w=600&q=80",
+      "image": "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80",
       "isFavorite": true
     },
     {
@@ -134,7 +134,23 @@
       "price": 22000,
       "description": "Pastry Prancis renyah di luar, berongga lembut di dalam dengan aroma mentega murni Prancis yang wangi.",
       "image": "https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=600&q=80",
-      "isFavorite": false
+      "isFavorite": false,
+      "foodOptions": {
+        "portions": [
+          { "id": "p1", "name": "1 Buah (Standar)", "extraPrice": 0, "desc": "1 Porsi reguler" },
+          { "id": "p2", "name": "2 Buah (Double)", "extraPrice": 18000, "desc": "Hemat Rp4.000" }
+        ],
+        "serving": [
+          { "id": "warm", "name": "Dihangatkan 🔥 (Renyah)", "default": true },
+          { "id": "room", "name": "Suhu Ruang 📦" }
+        ],
+        "toppings": [
+          { "id": "t0", "name": "Original Butter", "extraPrice": 0, "default": true },
+          { "id": "t1", "name": "Extra French Butter (+Rp4.000)", "extraPrice": 4000 },
+          { "id": "t2", "name": "Selai Strawberry (+Rp5.000)", "extraPrice": 5000 },
+          { "id": "t3", "name": "Madu Acacia (+Rp5.000)", "extraPrice": 5000 }
+        ]
+      }
     },
     {
       "id": "m10",
@@ -147,7 +163,22 @@
       "price": 25000,
       "description": "Roti gulung kayu manis hangat dengan lelehan cream cheese glaze di atasnya. Cocok dinikmati bersama kopi hitam.",
       "image": "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=600&q=80",
-      "isFavorite": false
+      "isFavorite": false,
+      "foodOptions": {
+        "portions": [
+          { "id": "p1", "name": "1 Buah (Standar)", "extraPrice": 0, "desc": "1 Porsi hangat" },
+          { "id": "p2", "name": "2 Buah (Double)", "extraPrice": 22000, "desc": "Hemat Rp3.000" }
+        ],
+        "serving": [
+          { "id": "warm", "name": "Dihangatkan 🔥 (Lumer)", "default": true },
+          { "id": "room", "name": "Suhu Ruang 📦" }
+        ],
+        "toppings": [
+          { "id": "t0", "name": "Cream Cheese Glaze Standar", "extraPrice": 0, "default": true },
+          { "id": "t1", "name": "Extra Cream Cheese (+Rp5.000)", "extraPrice": 5000 },
+          { "id": "t2", "name": "Saus Salted Caramel (+Rp4.000)", "extraPrice": 4000 }
+        ]
+      }
     },
     {
       "id": "m11",
@@ -160,7 +191,23 @@
       "price": 28000,
       "description": "Kentang goreng renyah dibaluri minyak truffle aromatik, taburan keju parmesan, dan saus garlic mayo.",
       "image": "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=600&q=80",
-      "isFavorite": false
+      "isFavorite": false,
+      "foodOptions": {
+        "portions": [
+          { "id": "p1", "name": "Porsi Reguler", "extraPrice": 0, "desc": "150 gram" },
+          { "id": "p2", "name": "Porsi Jumbo", "extraPrice": 16000, "desc": "300 gram (Puas)" }
+        ],
+        "serving": [
+          { "id": "warm", "name": "Goreng Segar & Panas 🔥", "default": true },
+          { "id": "mild", "name": "Less Salt (Rendah Garam)" }
+        ],
+        "toppings": [
+          { "id": "t0", "name": "Garlic Mayo (+Rp0)", "extraPrice": 0, "default": true },
+          { "id": "t1", "name": "Extra Truffle Dip (+Rp6.000)", "extraPrice": 6000 },
+          { "id": "t2", "name": "Saus Keju Cheddar (+Rp5.000)", "extraPrice": 5000 },
+          { "id": "t3", "name": "Saus Sambal Ekstra (+Rp0)", "extraPrice": 0 }
+        ]
+      }
     },
     {
       "id": "m12",
@@ -173,24 +220,22 @@
       "price": 24000,
       "description": "Brownie cokelat padat dan lumer dengan taburan almond panggang renyah.",
       "image": "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=600&q=80",
-      "isFavorite": false
+      "isFavorite": false,
+      "foodOptions": {
+        "portions": [
+          { "id": "p1", "name": "1 Potong (Standar)", "extraPrice": 0, "desc": "Fudgy slice" },
+          { "id": "p2", "name": "2 Potong (Double)", "extraPrice": 20000, "desc": "Hemat Rp4.000" }
+        ],
+        "serving": [
+          { "id": "warm", "name": "Dihangatkan 🔥 (Fudgy)", "default": true },
+          { "id": "cold", "name": "Dingin Chilled ❄️ (Kenyal)" }
+        ],
+        "toppings": [
+          { "id": "t0", "name": "Taburan Almond Asli", "extraPrice": 0, "default": true },
+          { "id": "t1", "name": "+1 Scoop Ice Cream Vanilla (+Rp8.000)", "extraPrice": 8000 },
+          { "id": "t2", "name": "Saus Cokelat Belgia (+Rp4.000)", "extraPrice": 4000 }
+        ]
+      }
     }
-  ],
-  "customizationDefaults": {
-    "sizes": [
-      { "id": "small", "name": "Kecil", "volume": "250 ml", "extraPrice": 0, "icon": "cup-small" },
-      { "id": "medium", "name": "Sedang", "volume": "350 ml", "extraPrice": 4000, "icon": "cup-medium", "default": true },
-      { "id": "large", "name": "Besar", "volume": "500 ml", "extraPrice": 8000, "icon": "cup-large" }
-    ],
-    "sugarLevels": [
-      { "id": "none", "name": "Tanpa gula (0%)" },
-      { "id": "less", "name": "Kurang manis (50%)", "default": true },
-      { "id": "normal", "name": "Normal (100%)" }
-    ],
-    "milks": [
-      { "id": "fresh", "name": "Susu segar", "extraPrice": 0, "default": true },
-      { "id": "oat", "name": "Oat milk", "extraPrice": 6000 }
-    ],
-    "extraEspressoPrice": 5000
-  }
+  ]
 }

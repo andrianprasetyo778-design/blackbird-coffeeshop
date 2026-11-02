@@ -3,6 +3,9 @@
  * Pure Vanilla JavaScript (No SQL, No External Heavy Libraries)
  */
 
+// Fallback image in case of network issues
+const FALLBACK_COFFEE_IMG = "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80";
+
 // Fallback dataset to guarantee 100% functionality even when opened directly via file://
 const DEFAULT_DATA = {
   "coffeeshop": {
@@ -48,7 +51,7 @@ const DEFAULT_DATA = {
       "reviews": 94,
       "price": 30000,
       "description": "Perpaduan seimbang espresso premium dengan foam susu tebal bertekstur lembut dan taburan bubuk cokelat.",
-      "image": "https://images.unsplash.com/photo-1572442388796-11668ba67e53?auto=format&fit=crop&w=600&q=80",
+      "image": "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80",
       "isFavorite": true
     },
     {
@@ -140,7 +143,23 @@ const DEFAULT_DATA = {
       "price": 22000,
       "description": "Pastry Prancis renyah di luar, berongga lembut di dalam dengan aroma mentega murni Prancis yang wangi.",
       "image": "https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=600&q=80",
-      "isFavorite": false
+      "isFavorite": false,
+      "foodOptions": {
+        "portions": [
+          { "id": "p1", "name": "1 Buah (Standar)", "extraPrice": 0, "desc": "1 Porsi reguler" },
+          { "id": "p2", "name": "2 Buah (Double)", "extraPrice": 18000, "desc": "Hemat Rp4.000" }
+        ],
+        "serving": [
+          { "id": "warm", "name": "Dihangatkan 🔥 (Renyah)", "default": true },
+          { "id": "room", "name": "Suhu Ruang 📦" }
+        ],
+        "toppings": [
+          { "id": "t0", "name": "Original Butter", "extraPrice": 0, "default": true },
+          { "id": "t1", "name": "Extra French Butter (+Rp4.000)", "extraPrice": 4000 },
+          { "id": "t2", "name": "Selai Strawberry (+Rp5.000)", "extraPrice": 5000 },
+          { "id": "t3", "name": "Madu Acacia (+Rp5.000)", "extraPrice": 5000 }
+        ]
+      }
     },
     {
       "id": "m10",
@@ -153,7 +172,22 @@ const DEFAULT_DATA = {
       "price": 25000,
       "description": "Roti gulung kayu manis hangat dengan lelehan cream cheese glaze di atasnya. Cocok dinikmati bersama kopi hitam.",
       "image": "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=600&q=80",
-      "isFavorite": false
+      "isFavorite": false,
+      "foodOptions": {
+        "portions": [
+          { "id": "p1", "name": "1 Buah (Standar)", "extraPrice": 0, "desc": "1 Porsi hangat" },
+          { "id": "p2", "name": "2 Buah (Double)", "extraPrice": 22000, "desc": "Hemat Rp3.000" }
+        ],
+        "serving": [
+          { "id": "warm", "name": "Dihangatkan 🔥 (Lumer)", "default": true },
+          { "id": "room", "name": "Suhu Ruang 📦" }
+        ],
+        "toppings": [
+          { "id": "t0", "name": "Cream Cheese Glaze Standar", "extraPrice": 0, "default": true },
+          { "id": "t1", "name": "Extra Cream Cheese (+Rp5.000)", "extraPrice": 5000 },
+          { "id": "t2", "name": "Saus Salted Caramel (+Rp4.000)", "extraPrice": 4000 }
+        ]
+      }
     },
     {
       "id": "m11",
@@ -166,7 +200,23 @@ const DEFAULT_DATA = {
       "price": 28000,
       "description": "Kentang goreng renyah dibaluri minyak truffle aromatik, taburan keju parmesan, dan saus garlic mayo.",
       "image": "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=600&q=80",
-      "isFavorite": false
+      "isFavorite": false,
+      "foodOptions": {
+        "portions": [
+          { "id": "p1", "name": "Porsi Reguler", "extraPrice": 0, "desc": "150 gram" },
+          { "id": "p2", "name": "Porsi Jumbo", "extraPrice": 16000, "desc": "300 gram (Puas)" }
+        ],
+        "serving": [
+          { "id": "warm", "name": "Goreng Segar & Panas 🔥", "default": true },
+          { "id": "mild", "name": "Less Salt (Rendah Garam)" }
+        ],
+        "toppings": [
+          { "id": "t0", "name": "Garlic Mayo (+Rp0)", "extraPrice": 0, "default": true },
+          { "id": "t1", "name": "Extra Truffle Dip (+Rp6.000)", "extraPrice": 6000 },
+          { "id": "t2", "name": "Saus Keju Cheddar (+Rp5.000)", "extraPrice": 5000 },
+          { "id": "t3", "name": "Saus Sambal Ekstra (+Rp0)", "extraPrice": 0 }
+        ]
+      }
     },
     {
       "id": "m12",
@@ -179,7 +229,22 @@ const DEFAULT_DATA = {
       "price": 24000,
       "description": "Brownie cokelat padat dan lumer dengan taburan almond panggang renyah.",
       "image": "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=600&q=80",
-      "isFavorite": false
+      "isFavorite": false,
+      "foodOptions": {
+        "portions": [
+          { "id": "p1", "name": "1 Potong (Standar)", "extraPrice": 0, "desc": "Fudgy slice" },
+          { "id": "p2", "name": "2 Potong (Double)", "extraPrice": 20000, "desc": "Hemat Rp4.000" }
+        ],
+        "serving": [
+          { "id": "warm", "name": "Dihangatkan 🔥 (Fudgy)", "default": true },
+          { "id": "cold", "name": "Dingin Chilled ❄️ (Kenyal)" }
+        ],
+        "toppings": [
+          { "id": "t0", "name": "Taburan Almond Asli", "extraPrice": 0, "default": true },
+          { "id": "t1", "name": "+1 Scoop Ice Cream Vanilla (+Rp8.000)", "extraPrice": 8000 },
+          { "id": "t2", "name": "Saus Cokelat Belgia (+Rp4.000)", "extraPrice": 4000 }
+        ]
+      }
     }
   ]
 };
@@ -201,9 +266,7 @@ const state = {
       productId: 'm1',
       name: 'Kopi Susu Gula Aren',
       size: 'Sedang - 350 ml',
-      sugar: 'Kurang manis',
-      milk: 'Susu segar',
-      extraEspresso: false,
+      customNotes: 'Dingin 🧊 • Kurang manis (50%) • Susu segar',
       price: 32000,
       qty: 2,
       image: 'https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&w=600&q=80'
@@ -212,13 +275,11 @@ const state = {
       id: 'cart-2',
       productId: 'm2',
       name: 'Cappuccino',
-      size: 'Reguler - panas',
-      sugar: 'Satu gula',
-      milk: 'Susu sapi',
-      extraEspresso: false,
+      size: 'Reguler - 250 ml',
+      customNotes: 'Panas ☕ • Sedikit gula • Susu sapi',
       price: 30000,
       qty: 1,
-      image: 'https://images.unsplash.com/photo-1572442388796-11668ba67e53?auto=format&fit=crop&w=600&q=80'
+      image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80'
     }
   ],
   voucherApplied: {
@@ -369,12 +430,12 @@ function renderFavorites() {
   attachProductCardEvents(container);
 }
 
-// HTML Generator for Product Cards
+// HTML Generator for Product Cards with Image Error Fallback
 function createProductCardHtml(item) {
   return `
     <div class="product-card" data-product-id="${item.id}">
       <div class="card-img-wrapper">
-        <img class="card-img" src="${item.image}" alt="${item.name}" loading="lazy" />
+        <img class="card-img" src="${item.image}" alt="${item.name}" loading="lazy" onerror="this.onerror=null; this.src='${FALLBACK_COFFEE_IMG}'" />
         <span class="badge-tag">${item.badge}</span>
         <span class="rating-tag">★ ${item.rating}</span>
       </div>
@@ -592,7 +653,7 @@ function renderMenuCatalog() {
 }
 
 // ==========================================================================
-// SCREEN 4: PRODUCT DETAIL & CUSTOMIZATION MODAL
+// SCREEN 4: PRODUCT DETAIL & CUSTOMIZATION MODAL (LOGICAL DYNAMIC)
 // ==========================================================================
 function initCustomizationModal() {
   const modal = document.getElementById('customizationModal');
@@ -614,18 +675,43 @@ function initCustomizationModal() {
       if (!state.currentCustomization) return;
       
       const c = state.currentCustomization;
-      const cartItem = {
-        id: 'cart-' + Date.now(),
-        productId: c.product.id,
-        name: c.product.name,
-        size: `${c.size.name} - ${c.size.volume}`,
-        sugar: c.sugar.name,
-        milk: c.milk.name,
-        extraEspresso: c.extraEspresso,
-        price: c.calculatedPrice,
-        qty: 1,
-        image: c.product.image
-      };
+      let cartItem = null;
+
+      if (c.type === 'food') {
+        cartItem = {
+          id: 'cart-' + Date.now(),
+          productId: c.product.id,
+          name: c.product.name,
+          size: c.portion.name,
+          customNotes: `${c.serving.name} • ${c.topping.name}${c.note ? ' • ' + c.note : ''}`,
+          price: c.calculatedPrice,
+          qty: 1,
+          image: c.product.image
+        };
+      } else if (c.type === 'coffee') {
+        cartItem = {
+          id: 'cart-' + Date.now(),
+          productId: c.product.id,
+          name: c.product.name,
+          size: `${c.size.name} (${c.size.volume})`,
+          customNotes: `${c.temp.name} • ${c.sugar.name} • ${c.milk.name}${c.extraEspresso ? ' • +1 Shot Espresso' : ''}`,
+          price: c.calculatedPrice,
+          qty: 1,
+          image: c.product.image
+        };
+      } else {
+        // non-coffee
+        cartItem = {
+          id: 'cart-' + Date.now(),
+          productId: c.product.id,
+          name: c.product.name,
+          size: `${c.size.name} (${c.size.volume})`,
+          customNotes: `${c.temp.name} • ${c.sugar.name} • ${c.milk.name} • ${c.topping.name}`,
+          price: c.calculatedPrice,
+          qty: 1,
+          image: c.product.image
+        };
+      }
 
       state.cart.push(cartItem);
       updateCartBadge();
@@ -642,100 +728,346 @@ function openCustomizationModal(productId) {
   const modal = document.getElementById('customizationModal');
   if (!modal) return;
 
-  // Set initial customization defaults
-  state.currentCustomization = {
-    product: product,
-    size: { id: 'medium', name: 'Sedang', volume: '350 ml', extra: 4000 },
-    sugar: { id: 'less', name: 'Kurang manis' },
-    milk: { id: 'fresh', name: 'Susu segar', extra: 0 },
-    extraEspresso: false,
-    calculatedPrice: product.price + 4000
-  };
+  // Populate Basic Info
+  const modalImg = document.getElementById('modalImg');
+  modalImg.src = product.image;
+  modalImg.onerror = () => { modalImg.src = FALLBACK_COFFEE_IMG; };
 
-  // Populate UI
-  document.getElementById('modalImg').src = product.image;
   document.getElementById('modalTitle').textContent = product.name;
   document.getElementById('modalBasePrice').textContent = formatRupiah(product.price);
   document.getElementById('modalDesc').textContent = product.description;
 
-  // Render Cup Size Choices
-  const cupContainer = document.getElementById('cupSizesContainer');
-  cupContainer.innerHTML = `
-    <div class="cup-card" data-size="small" data-extra="0" onclick="selectCupSize('small', 'Kecil', '250 ml', 0)">
-      <div class="cup-silhouette">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/></svg>
-      </div>
-      <div class="cup-label">Kecil</div>
-      <div class="cup-vol">250 ml</div>
-      <div class="cup-extra">+Rp0</div>
-    </div>
-    <div class="cup-card active" data-size="medium" data-extra="4000" onclick="selectCupSize('medium', 'Sedang', '350 ml', 4000)">
-      <div class="cup-silhouette">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/></svg>
-      </div>
-      <div class="cup-label">Sedang</div>
-      <div class="cup-vol">350 ml</div>
-      <div class="cup-extra">+Rp4.000</div>
-    </div>
-    <div class="cup-card" data-size="large" data-extra="8000" onclick="selectCupSize('large', 'Besar', '500 ml', 8000)">
-      <div class="cup-silhouette">
-        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/></svg>
-      </div>
-      <div class="cup-label">Besar</div>
-      <div class="cup-vol">500 ml</div>
-      <div class="cup-extra">+Rp8.000</div>
-    </div>
-  `;
+  const optionsContainer = document.getElementById('modalDynamicOptions');
+  const isFood = product.category === 'cemilan';
+  const isCoffee = product.category === 'kopi';
 
-  // Render Sugar Level Choices
-  const sugarContainer = document.getElementById('sugarChipsContainer');
-  sugarContainer.innerHTML = `
-    <div class="radio-chip" onclick="selectSugar('Tanpa gula (0%)', this)">Tanpa gula</div>
-    <div class="radio-chip active" onclick="selectSugar('Kurang manis (50%)', this)">Kurang manis</div>
-    <div class="radio-chip" onclick="selectSugar('Normal (100%)', this)">Normal</div>
-  `;
-
-  // Render Milk Choices
-  const milkContainer = document.getElementById('milkChipsContainer');
-  milkContainer.innerHTML = `
-    <div class="radio-chip active" onclick="selectMilk('Susu segar', 0, this)">Susu segar (+Rp0)</div>
-    <div class="radio-chip" onclick="selectMilk('Oat milk', 6000, this)">Oat milk (+Rp6.000)</div>
-  `;
-
-  // Reset espresso switch
-  const espressoToggle = document.getElementById('toggleExtraEspresso');
-  if (espressoToggle) {
-    espressoToggle.checked = false;
-    espressoToggle.onchange = (e) => {
-      state.currentCustomization.extraEspresso = e.target.checked;
-      recalcCustomizationPrice();
+  if (isFood) {
+    // ==========================================
+    // LOGICAL CUSTOMIZATION FOR FOOD / SNACKS
+    // ==========================================
+    const foodOpts = product.foodOptions || {
+      portions: [
+        { id: 'p1', name: '1 Porsi (Standar)', extraPrice: 0, desc: 'Porsi hangat' },
+        { id: 'p2', name: '2 Porsi (Double)', extraPrice: 18000, desc: 'Porsi hemat' }
+      ],
+      serving: [
+        { id: 'warm', name: 'Dihangatkan 🔥 (Renyah/Lumer)', default: true },
+        { id: 'room', name: 'Suhu Ruang 📦 (Bawa Pulang)' }
+      ],
+      toppings: [
+        { id: 't0', name: 'Saus Standar Resep', extraPrice: 0, default: true },
+        { id: 't1', name: 'Extra Saus / Topping (+Rp4.000)', extraPrice: 4000 }
+      ]
     };
+
+    state.currentCustomization = {
+      type: 'food',
+      product: product,
+      portion: { id: foodOpts.portions[0].id, name: foodOpts.portions[0].name, extra: foodOpts.portions[0].extraPrice },
+      serving: { id: foodOpts.serving[0].id, name: foodOpts.serving[0].name },
+      topping: { id: foodOpts.toppings[0].id, name: foodOpts.toppings[0].name, extra: foodOpts.toppings[0].extraPrice },
+      note: 'Standar',
+      calculatedPrice: product.price + foodOpts.portions[0].extraPrice + foodOpts.toppings[0].extraPrice
+    };
+
+    optionsContainer.innerHTML = `
+      <!-- Pilihan Porsi Makanan -->
+      <div class="option-section">
+        <h4 class="option-heading">Pilih porsi sajian</h4>
+        <div class="portion-grid">
+          ${foodOpts.portions.map((p, idx) => `
+            <div class="portion-card ${idx === 0 ? 'active' : ''}" data-portion-id="${p.id}" onclick="selectFoodPortion('${p.id}', '${p.name}', ${p.extraPrice}, this)">
+              <div class="portion-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>
+              </div>
+              <div class="portion-label">${p.name}</div>
+              <div class="portion-desc">${p.desc}</div>
+              <div class="portion-extra">${p.extraPrice > 0 ? '+' + formatRupiah(p.extraPrice) : '+Rp0'}</div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+
+      <!-- Cara Penyajian -->
+      <div class="option-section">
+        <h4 class="option-heading">Cara penyajian</h4>
+        <div class="radio-chips-grid">
+          ${foodOpts.serving.map((s, idx) => `
+            <div class="radio-chip ${idx === 0 ? 'active' : ''}" onclick="selectFoodServing('${s.name}', this)">
+              ${s.name}
+            </div>
+          `).join('')}
+        </div>
+      </div>
+
+      <!-- Pilihan Saus / Cocolan / Topping -->
+      <div class="option-section">
+        <h4 class="option-heading">Pilihan saus & cocolan ekstra</h4>
+        <div class="radio-chips-grid">
+          ${foodOpts.toppings.map((t, idx) => `
+            <div class="radio-chip ${idx === 0 ? 'active' : ''}" onclick="selectFoodTopping('${t.name}', ${t.extraPrice}, this)">
+              ${t.name}
+            </div>
+          `).join('')}
+        </div>
+      </div>
+
+      <!-- Catatan Dapur -->
+      <div class="option-section">
+        <h4 class="option-heading">Catatan penyajian</h4>
+        <div class="radio-chips-grid">
+          <div class="radio-chip active" onclick="selectFoodNote('Standar', this)">Standar</div>
+          <div class="radio-chip" onclick="selectFoodNote('Pisahkan Saus / Cocolan', this)">Pisahkan Saus</div>
+          <div class="radio-chip" onclick="selectFoodNote('Potong Jadi 2 Bagian', this)">Potong Jadi 2</div>
+        </div>
+      </div>
+    `;
+
+  } else if (isCoffee) {
+    // ==========================================
+    // LOGICAL CUSTOMIZATION FOR COFFEE DRINKS
+    // ==========================================
+    state.currentCustomization = {
+      type: 'coffee',
+      product: product,
+      size: { id: 'medium', name: 'Sedang', volume: '350 ml', extra: 4000 },
+      temp: { id: 'dingin', name: 'Dingin (Es Kristal) 🧊' },
+      sugar: { id: 'less', name: 'Kurang manis (50%)' },
+      milk: { id: 'fresh', name: 'Susu segar', extra: 0 },
+      extraEspresso: false,
+      calculatedPrice: product.price + 4000
+    };
+
+    optionsContainer.innerHTML = `
+      <!-- Pilihan Ukuran Cangkir Kopi -->
+      <div class="option-section">
+        <h4 class="option-heading">Pilih ukuran cangkir</h4>
+        <div class="cup-sizes-grid">
+          <div class="cup-card" data-size="small" onclick="selectCupSize('small', 'Kecil', '250 ml', 0, this)">
+            <div class="cup-silhouette">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/></svg>
+            </div>
+            <div class="cup-label">Kecil</div>
+            <div class="cup-vol">250 ml</div>
+            <div class="cup-extra">+Rp0</div>
+          </div>
+          <div class="cup-card active" data-size="medium" onclick="selectCupSize('medium', 'Sedang', '350 ml', 4000, this)">
+            <div class="cup-silhouette">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/></svg>
+            </div>
+            <div class="cup-label">Sedang</div>
+            <div class="cup-vol">350 ml</div>
+            <div class="cup-extra">+Rp4.000</div>
+          </div>
+          <div class="cup-card" data-size="large" onclick="selectCupSize('large', 'Besar', '500 ml', 8000, this)">
+            <div class="cup-silhouette">
+              <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/></svg>
+            </div>
+            <div class="cup-label">Besar</div>
+            <div class="cup-vol">500 ml</div>
+            <div class="cup-extra">+Rp8.000</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Suhu Minuman -->
+      <div class="option-section">
+        <h4 class="option-heading">Suhu penyajian kopi</h4>
+        <div class="radio-chips-grid">
+          <div class="radio-chip active" onclick="selectDrinkTemp('Dingin (Es Kristal) 🧊', this)">Dingin 🧊</div>
+          <div class="radio-chip" onclick="selectDrinkTemp('Hangat / Panas ☕', this)">Hangat / Panas ☕</div>
+        </div>
+      </div>
+
+      <!-- Tingkat Manis -->
+      <div class="option-section">
+        <h4 class="option-heading">Tingkat kemanisan</h4>
+        <div class="radio-chips-grid">
+          <div class="radio-chip" onclick="selectSugar('Tanpa gula (0%)', this)">Tanpa gula</div>
+          <div class="radio-chip active" onclick="selectSugar('Kurang manis (50%)', this)">Kurang manis (50%)</div>
+          <div class="radio-chip" onclick="selectSugar('Normal (100%)', this)">Normal (100%)</div>
+        </div>
+      </div>
+
+      <!-- Pilihan Susu -->
+      <div class="option-section">
+        <h4 class="option-heading">Pilihan susu</h4>
+        <div class="radio-chips-grid">
+          <div class="radio-chip active" onclick="selectMilk('Susu segar', 0, this)">Susu segar (+Rp0)</div>
+          <div class="radio-chip" onclick="selectMilk('Oat milk', 6000, this)">Oat milk (+Rp6.000)</div>
+        </div>
+      </div>
+
+      <!-- Tambahan Espresso Shot -->
+      <div class="option-section">
+        <div class="toggle-row">
+          <div>
+            <h4 class="option-heading" style="margin-bottom:2px;">Tambahan espresso shot</h4>
+            <p style="font-size: 11px; color: var(--text-muted);">Extra +1 shot espresso double crema (+Rp5.000)</p>
+          </div>
+          <label class="switch">
+            <input type="checkbox" id="toggleExtraEspresso">
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
+    `;
+
+    const espressoToggle = document.getElementById('toggleExtraEspresso');
+    if (espressoToggle) {
+      espressoToggle.checked = false;
+      espressoToggle.onchange = (e) => {
+        state.currentCustomization.extraEspresso = e.target.checked;
+        recalcCustomizationPrice();
+      };
+    }
+
+  } else {
+    // ==========================================
+    // LOGICAL CUSTOMIZATION FOR NON-COFFEE (Matcha, Tea)
+    // ==========================================
+    state.currentCustomization = {
+      type: 'non-coffee',
+      product: product,
+      size: { id: 'medium', name: 'Reguler', volume: '350 ml', extra: 0 },
+      temp: { id: 'dingin', name: 'Dingin (Es Kristal) 🧊' },
+      sugar: { id: 'less', name: 'Kurang manis (50%)' },
+      milk: { id: 'fresh', name: 'Susu segar', extra: 0 },
+      topping: { id: 't0', name: 'Tanpa Topping', extra: 0 },
+      calculatedPrice: product.price
+    };
+
+    optionsContainer.innerHTML = `
+      <!-- Pilihan Ukuran Cangkir -->
+      <div class="option-section">
+        <h4 class="option-heading">Pilih ukuran porsi</h4>
+        <div class="cup-sizes-grid">
+          <div class="cup-card active" onclick="selectCupSize('medium', 'Reguler', '350 ml', 0, this)">
+            <div class="cup-silhouette">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/></svg>
+            </div>
+            <div class="cup-label">Reguler</div>
+            <div class="cup-vol">350 ml</div>
+            <div class="cup-extra">+Rp0</div>
+          </div>
+          <div class="cup-card" onclick="selectCupSize('large', 'Besar', '500 ml', 6000, this)">
+            <div class="cup-silhouette">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/></svg>
+            </div>
+            <div class="cup-label">Besar</div>
+            <div class="cup-vol">500 ml</div>
+            <div class="cup-extra">+Rp6.000</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Suhu Minuman -->
+      <div class="option-section">
+        <h4 class="option-heading">Suhu penyajian</h4>
+        <div class="radio-chips-grid">
+          <div class="radio-chip active" onclick="selectDrinkTemp('Dingin (Es Kristal) 🧊', this)">Dingin 🧊</div>
+          <div class="radio-chip" onclick="selectDrinkTemp('Hangat / Panas ☕', this)">Hangat / Panas ☕</div>
+        </div>
+      </div>
+
+      <!-- Tingkat Manis -->
+      <div class="option-section">
+        <h4 class="option-heading">Tingkat kemanisan</h4>
+        <div class="radio-chips-grid">
+          <div class="radio-chip" onclick="selectSugar('Tanpa gula (0%)', this)">Tanpa gula</div>
+          <div class="radio-chip active" onclick="selectSugar('Kurang manis (50%)', this)">Kurang manis (50%)</div>
+          <div class="radio-chip" onclick="selectSugar('Normal (100%)', this)">Normal (100%)</div>
+        </div>
+      </div>
+
+      <!-- Pilihan Susu -->
+      <div class="option-section">
+        <h4 class="option-heading">Pilihan racikan susu</h4>
+        <div class="radio-chips-grid">
+          <div class="radio-chip active" onclick="selectMilk('Susu segar', 0, this)">Susu segar (+Rp0)</div>
+          <div class="radio-chip" onclick="selectMilk('Oat milk', 6000, this)">Oat milk (+Rp6.000)</div>
+        </div>
+      </div>
+
+      <!-- Topping Spesial -->
+      <div class="option-section">
+        <h4 class="option-heading">Topping pendamping</h4>
+        <div class="radio-chips-grid">
+          <div class="radio-chip active" onclick="selectDrinkTopping('Tanpa Topping', 0, this)">Tanpa Topping</div>
+          <div class="radio-chip" onclick="selectDrinkTopping('Brown Sugar Boba', 4000, this)">Boba (+Rp4.000)</div>
+          <div class="radio-chip" onclick="selectDrinkTopping('Grass Jelly Cincau', 4000, this)">Grass Jelly (+Rp4.000)</div>
+          <div class="radio-chip" onclick="selectDrinkTopping('Whipped Cream', 4000, this)">Whipped Cream (+Rp4.000)</div>
+        </div>
+      </div>
+    `;
   }
 
   recalcCustomizationPrice();
   modal.classList.add('active');
 }
 
-window.selectCupSize = function(id, name, vol, extra) {
-  document.querySelectorAll('.cup-card').forEach(c => c.classList.remove('active'));
-  const target = document.querySelector(`.cup-card[data-size="${id}"]`);
-  if (target) target.classList.add('active');
+// Food Action Handlers
+window.selectFoodPortion = function(id, name, extra, el) {
+  document.querySelectorAll('.portion-card').forEach(c => c.classList.remove('active'));
+  el.classList.add('active');
+  state.currentCustomization.portion = { id, name, extra };
+  recalcCustomizationPrice();
+};
 
+window.selectFoodServing = function(name, el) {
+  el.parentElement.querySelectorAll('.radio-chip').forEach(c => c.classList.remove('active'));
+  el.classList.add('active');
+  state.currentCustomization.serving = { name };
+  recalcCustomizationPrice();
+};
+
+window.selectFoodTopping = function(name, extra, el) {
+  el.parentElement.querySelectorAll('.radio-chip').forEach(c => c.classList.remove('active'));
+  el.classList.add('active');
+  state.currentCustomization.topping = { name, extra };
+  recalcCustomizationPrice();
+};
+
+window.selectFoodNote = function(note, el) {
+  el.parentElement.querySelectorAll('.radio-chip').forEach(c => c.classList.remove('active'));
+  el.classList.add('active');
+  state.currentCustomization.note = note === 'Standar' ? '' : note;
+  recalcCustomizationPrice();
+};
+
+// Drink Action Handlers
+window.selectCupSize = function(id, name, vol, extra, el) {
+  document.querySelectorAll('.cup-card').forEach(c => c.classList.remove('active'));
+  el.classList.add('active');
   state.currentCustomization.size = { id, name, volume: vol, extra };
   recalcCustomizationPrice();
 };
 
-window.selectSugar = function(label, element) {
-  element.parentElement.querySelectorAll('.radio-chip').forEach(c => c.classList.remove('active'));
-  element.classList.add('active');
-  state.currentCustomization.sugar = { name: label };
+window.selectDrinkTemp = function(name, el) {
+  el.parentElement.querySelectorAll('.radio-chip').forEach(c => c.classList.remove('active'));
+  el.classList.add('active');
+  state.currentCustomization.temp = { name };
   recalcCustomizationPrice();
 };
 
-window.selectMilk = function(label, extra, element) {
-  element.parentElement.querySelectorAll('.radio-chip').forEach(c => c.classList.remove('active'));
-  element.classList.add('active');
-  state.currentCustomization.milk = { name: label, extra };
+window.selectSugar = function(name, el) {
+  el.parentElement.querySelectorAll('.radio-chip').forEach(c => c.classList.remove('active'));
+  el.classList.add('active');
+  state.currentCustomization.sugar = { name };
+  recalcCustomizationPrice();
+};
+
+window.selectMilk = function(name, extra, el) {
+  el.parentElement.querySelectorAll('.radio-chip').forEach(c => c.classList.remove('active'));
+  el.classList.add('active');
+  state.currentCustomization.milk = { name, extra };
+  recalcCustomizationPrice();
+};
+
+window.selectDrinkTopping = function(name, extra, el) {
+  el.parentElement.querySelectorAll('.radio-chip').forEach(c => c.classList.remove('active'));
+  el.classList.add('active');
+  state.currentCustomization.topping = { name, extra };
   recalcCustomizationPrice();
 };
 
@@ -744,18 +1076,56 @@ function recalcCustomizationPrice() {
   if (!c) return;
 
   const base = c.product.price;
-  const sizeExtra = c.size.extra || 0;
-  const milkExtra = c.milk.extra || 0;
-  const espExtra = c.extraEspresso ? 5000 : 0;
+  let total = base;
+  const summaryBox = document.getElementById('modalSummaryBox');
 
-  const total = base + sizeExtra + milkExtra + espExtra;
-  c.calculatedPrice = total;
+  if (c.type === 'food') {
+    const portionExtra = c.portion.extra || 0;
+    const toppingExtra = c.topping.extra || 0;
+    total = base + portionExtra + toppingExtra;
+    c.calculatedPrice = total;
 
-  // Update Summary Card in Modal
-  document.getElementById('sumSize').textContent = `${c.size.name} - ${c.size.volume}`;
-  document.getElementById('sumSugar').textContent = c.sugar.name;
-  document.getElementById('sumMilk').textContent = c.milk.name;
-  document.getElementById('sumEspresso').textContent = c.extraEspresso ? 'Tambah 1 Shot (+Rp5.000)' : 'Normal';
+    summaryBox.innerHTML = `
+      <div style="font-weight: 700; margin-bottom: 6px; color: var(--espresso);">Ringkasan Makanan:</div>
+      <div><span>Porsi:</span> <span>${c.portion.name}</span></div>
+      <div><span>Penyajian:</span> <span>${c.serving.name}</span></div>
+      <div><span>Saus/Topping:</span> <span>${c.topping.name}</span></div>
+      ${c.note ? `<div><span>Catatan:</span> <span>${c.note}</span></div>` : ''}
+    `;
+
+  } else if (c.type === 'coffee') {
+    const sizeExtra = c.size.extra || 0;
+    const milkExtra = c.milk.extra || 0;
+    const espExtra = c.extraEspresso ? 5000 : 0;
+    total = base + sizeExtra + milkExtra + espExtra;
+    c.calculatedPrice = total;
+
+    summaryBox.innerHTML = `
+      <div style="font-weight: 700; margin-bottom: 6px; color: var(--espresso);">Ringkasan Racikan Kopi:</div>
+      <div><span>Ukuran Cangkir:</span> <span>${c.size.name} - ${c.size.volume}</span></div>
+      <div><span>Suhu:</span> <span>${c.temp.name}</span></div>
+      <div><span>Tingkat Manis:</span> <span>${c.sugar.name}</span></div>
+      <div><span>Pilihan Susu:</span> <span>${c.milk.name}</span></div>
+      <div><span>Espresso:</span> <span>${c.extraEspresso ? 'Extra +1 Shot' : 'Normal'}</span></div>
+    `;
+
+  } else {
+    // Non-coffee
+    const sizeExtra = c.size.extra || 0;
+    const milkExtra = c.milk.extra || 0;
+    const topExtra = c.topping.extra || 0;
+    total = base + sizeExtra + milkExtra + topExtra;
+    c.calculatedPrice = total;
+
+    summaryBox.innerHTML = `
+      <div style="font-weight: 700; margin-bottom: 6px; color: var(--espresso);">Ringkasan Minuman:</div>
+      <div><span>Ukuran Cangkir:</span> <span>${c.size.name} - ${c.size.volume}</span></div>
+      <div><span>Suhu:</span> <span>${c.temp.name}</span></div>
+      <div><span>Tingkat Manis:</span> <span>${c.sugar.name}</span></div>
+      <div><span>Pilihan Susu:</span> <span>${c.milk.name}</span></div>
+      <div><span>Topping:</span> <span>${c.topping.name}</span></div>
+    `;
+  }
 
   // Update Sticky CTA
   const ctaBtn = document.getElementById('btnAddToCart');
@@ -789,10 +1159,11 @@ function renderCart() {
     subtotal += itemTotal;
     return `
       <div class="cart-item-card">
-        <img class="cart-item-img" src="${item.image}" alt="${item.name}" />
+        <img class="cart-item-img" src="${item.image}" alt="${item.name}" onerror="this.onerror=null; this.src='${FALLBACK_COFFEE_IMG}'" />
         <div class="cart-item-info">
           <h4 class="cart-item-name">${item.name}</h4>
-          <p class="cart-item-customs">${item.size} • ${item.sugar} • ${item.milk}</p>
+          <p class="cart-item-customs" style="font-weight:600; color:var(--espresso);">${item.size}</p>
+          <p class="cart-item-customs">${item.customNotes || ''}</p>
           <div class="cart-item-price">${formatRupiah(itemTotal)}</div>
         </div>
         <div class="cart-qty-ctrl">
@@ -829,35 +1200,13 @@ function renderCrossSellSnacks() {
   const snacks = state.data.menu.filter(m => m.category === 'cemilan').slice(0, 3);
   container.innerHTML = snacks.map(s => `
     <div class="cross-sell-card">
-      <img class="cross-sell-img" src="${s.image}" alt="${s.name}" />
+      <img class="cross-sell-img" src="${s.image}" alt="${s.name}" onerror="this.onerror=null; this.src='${FALLBACK_COFFEE_IMG}'" />
       <span class="cross-sell-title">${s.name}</span>
       <span class="cross-sell-price">${formatRupiah(s.price)}</span>
-      <button class="btn-secondary" style="padding: 4px; font-size: 11px; border-radius: var(--radius-sm);" onclick="addDirectSnack('${s.id}')">+ Tambah</button>
+      <button class="btn-secondary" style="padding: 4px; font-size: 11px; border-radius: var(--radius-sm);" onclick="openCustomizationModal('${s.id}')">+ Porsi</button>
     </div>
   `).join('');
 }
-
-window.addDirectSnack = function(productId) {
-  const snack = state.data.menu.find(m => m.id === productId);
-  if (!snack) return;
-
-  state.cart.push({
-    id: 'cart-' + Date.now(),
-    productId: snack.id,
-    name: snack.name,
-    size: '1 Porsi hangat',
-    sugar: 'Standar resep',
-    milk: 'Tanpa susu',
-    extraEspresso: false,
-    price: snack.price,
-    qty: 1,
-    image: snack.image
-  });
-
-  updateCartBadge();
-  renderCart();
-  showToast(`${snack.name} ditambahkan ke keranjang!`);
-};
 
 function updatePricingBreakdown(subtotal) {
   const discount = state.voucherApplied ? state.voucherApplied.discount : 0;

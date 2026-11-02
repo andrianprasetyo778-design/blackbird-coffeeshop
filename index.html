@@ -541,46 +541,11 @@
         </div>
         <p id="modalDesc" class="modal-desc"></p>
 
-        <!-- Pilihan Ukuran dengan Siluet Gelas Visual -->
-        <div class="option-section">
-          <h4 class="option-heading">Pilih ukuran cangkir</h4>
-          <div id="cupSizesContainer" class="cup-sizes-grid"></div>
-        </div>
+        <!-- Dynamic Options Container (Coffee, Non-Coffee, or Food/Snack) -->
+        <div id="modalDynamicOptions"></div>
 
-        <!-- Tingkat Manis -->
-        <div class="option-section">
-          <h4 class="option-heading">Tingkat kemanisan</h4>
-          <div id="sugarChipsContainer" class="radio-chips-grid"></div>
-        </div>
-
-        <!-- Pilihan Susu -->
-        <div class="option-section">
-          <h4 class="option-heading">Pilihan susu</h4>
-          <div id="milkChipsContainer" class="radio-chips-grid"></div>
-        </div>
-
-        <!-- Tambahan Espresso Shot -->
-        <div class="option-section">
-          <div class="toggle-row">
-            <div>
-              <h4 class="option-heading" style="margin-bottom:2px;">Tambahan espresso shot</h4>
-              <p style="font-size: 11px; color: var(--text-muted);">Extra +1 shot espresso (+Rp5.000)</p>
-            </div>
-            <label class="switch">
-              <input type="checkbox" id="toggleExtraEspresso">
-              <span class="slider"></span>
-            </label>
-          </div>
-        </div>
-
-        <!-- Ringkasan Pilihan -->
-        <div class="selection-summary-box">
-          <div style="font-weight: 700; margin-bottom: 6px; color: var(--espresso);">Ringkasan Racikan:</div>
-          <div><span>Ukuran:</span> <span id="sumSize">Sedang - 350 ml</span></div>
-          <div><span>Manis:</span> <span id="sumSugar">Kurang manis (50%)</span></div>
-          <div><span>Susu:</span> <span id="sumMilk">Susu segar</span></div>
-          <div><span>Espresso:</span> <span id="sumEspresso">Normal</span></div>
-        </div>
+        <!-- Dynamic Summary Box -->
+        <div id="modalSummaryBox" class="selection-summary-box"></div>
       </div>
 
       <!-- Sticky Add-to-Cart Button -->
