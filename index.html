@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Blackbird Coffeeshop - Pre-order & Reservasi Meja</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Top Global Responsive Bar for Laptops / Desktops -->
+  <header class="device-bar">
+    <div class="brand-badge">
+      <span>APP</span> Blackbird Coffeeshop
+    </div>
+    <div class="device-toggle-group">
+      <button id="btnModeMobile" class="device-btn active">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+        Mode HP
+      </button>
+      <button id="btnModeDesktop" class="device-btn">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12.01" y2="21"/></svg>
+        Mode Laptop/Desktop
+      </button>
+    </div>
+  </header>
+
+  <!-- Main App Shell -->
+  <div class="app-container">
+
+    <!-- Desktop Top Navigation Bar (Visible in desktop/laptop mode) -->
+    <nav class="desktop-nav">
+      <div class="desktop-nav-brand">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#94532B" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/></svg>
+        <h1>Blackbird Coffeeshop</h1>
+      </div>
+      <div class="desktop-nav-links">
+        <div class="desktop-nav-item active" data-view="home">Beranda</div>
+        <div class="desktop-nav-item" data-view="table">Pilih Meja</div>
+        <div class="desktop-nav-item" data-view="menu">Katalog Menu</div>
+        <div class="desktop-nav-item" data-view="cart">
+          Keranjang 
+          <span class="cart-count-badge" style="position:static; margin-left:4px;">2</span>
+        </div>
+        <div class="desktop-nav-item" data-view="tracking">Status Pesanan (#KK-024)</div>
+        <div class="desktop-nav-item" data-view="account">Akun Saya</div>
+      </div>
+    </nav>
+
+    <!-- Mobile Header -->
+    <header class="app-header">
+      <div class="header-top">
+        <div>
+          <h2 class="brand-title">Blackbird Coffeeshop</h2>
+          <p class="header-location">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Jl. Menggerwangi, Kec. Lemahwangi, Surakarta
+          </p>
+        </div>
+        <button class="icon-btn" title="Notifikasi" onclick="navigateTo('tracking')">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+          <span class="badge-dot"></span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Content Screens -->
+    <main class="screen-content">
+
+      <!-- ===================================================================
+           SCREEN 1: BERANDA (HOME)
+           =================================================================== -->
+      <section id="view-home" class="view-section active">
+        <h1 class="greeting-title">Selamat datang,<br>Andrian.</h1>
+
+        <!-- Mode Toggle [Dine-In / Meja] vs [Take-Away] -->
+        <div class="order-mode-toggle">
+          <button class="mode-btn active" data-mode="dine-in">Dine-in / Meja</button>
+          <button class="mode-btn" data-mode="take-away">Take-Away</button>
+        </div>
+
+        <!-- Hero Card -->
+        <div class="hero-card" onclick="navigateTo('table')">
+          <img class="hero-img" src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=800&q=80" alt="Suasana Coffeeshop" />
+          <div class="hero-overlay">
+            <span class="hero-tag">Reservasi & Pre-Order</span>
+            <h3>Pesan dari rumah,<br>nikmati di meja.</h3>
+            <p>Pilih meja & waktu kunjungan favoritmu &rarr;</p>
+          </div>
+        </div>
+
+        <!-- Loyalty Progress Card -->
+        <div class="loyalty-card" onclick="navigateTo('account')">
+          <div class="loyalty-info">
+            <h4>Sedikit lagi, kopi gratis!</h4>
+            <p>4 dari 8 stempel terkumpul</p>
+          </div>
+          <div class="stamp-progress-pill">4/8</div>
+        </div>
+
+        <!-- Quick Booking Card -->
+        <div class="quick-booking-card">
+          <div class="booking-card-head">
+            <h4 style="font-size: 13px; font-weight: 700; color: var(--espresso);">Pilih meja & waktu</h4>
+            <span class="booking-badge">1 MEJA KOSONG</span>
+          </div>
+          <div class="booking-specs-grid">
+            <div class="spec-item">
+              <span>Hari & waktu</span>
+              <strong id="quickDateText">Hari ini, 16.00</strong>
+            </div>
+            <div class="spec-item">
+              <span>Jumlah tamu</span>
+              <strong>2 orang</strong>
+            </div>
+            <div class="spec-item">
+              <span>Meja</span>
+              <strong id="quickTableText">A3 - 2 kursi</strong>
+            </div>
+          </div>
+          <div class="booking-actions">
+            <button class="btn-secondary" onclick="navigateTo('table')">Lihat denah</button>
+            <button class="btn-primary" onclick="navigateTo('table')">Pilih meja</button>
+          </div>
+        </div>
+
+        <!-- Section: Favorit Teman Kita -->
+        <div class="section-header-flex">
+          <h3 class="section-title">Favorit teman kita</h3>
+          <a class="see-all-link" onclick="navigateTo('menu')">Lihat semua</a>
+        </div>
+        <div id="homeFavGrid" class="fav-grid">
+          <!-- Dynamically Populated by app.js -->
+        </div>
+      </section>
+
+      <!-- ===================================================================
+           SCREEN 2: PILIH MEJA & KURSI
+           =================================================================== -->
+      <section id="view-table" class="view-section">
+        <h1 class="greeting-title" style="margin-top:0;">Pilih meja<br>& kursi.</h1>
+        <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 14px;">
+          Pesan dari rumah, pilih meja dan kursi untuk 2 tamu. Pesanan akan disajikan setelah kamu check-in di kafe.
+        </p>
+
+        <!-- Filters (Date & Guest) -->
+        <div class="reservation-filter-bar">
+          <select class="filter-select" id="selectBookingDate">
+            <option>Hari ini</option>
+            <option>Besok</option>
+            <option>Lusa</option>
+          </select>
+          <select class="filter-select" id="selectBookingGuests">
+            <option>2 orang</option>
+            <option>1 orang</option>
+            <option>4 orang</option>
+            <option>6 orang</option>
+          </select>
+        </div>
+
+        <!-- Time Slot Chips -->
+        <div class="timeslot-chips">
+          <div class="time-chip" data-time="14.00-16.00">14.00-16.00</div>
+          <div class="time-chip active" data-time="16.00-18.00">16.00-18.00</div>
+          <div class="time-chip" data-time="18.00-20.00">18.00-20.00</div>
+          <div class="time-chip" data-time="20.00-22.00">20.00-22.00</div>
+        </div>
+
+        <!-- View Switcher [Lihat Denah] vs [Daftar Meja] -->
+        <div class="seat-view-toggle">
+          <button id="btnViewDenah" class="view-btn active">Lihat Denah</button>
+          <button id="btnViewDaftar" class="view-btn">Daftar Meja</button>
+        </div>
+
+        <!-- Floor Plan Layout -->
+        <div id="floorPlanView" class="floor-plan-container">
+          <div class="floor-plan-header">
+            <span style="font-size: 11px; font-weight: 700; color: var(--text-muted);">DENAH TEMPAT DUDUK</span>
+            <span class="bar-counter-pill">BAR & ESPRESSO MACHINE</span>
+          </div>
+
+          <div class="zones-grid">
+            <!-- Zone 1: Ruang Utama -->
+            <div class="zone-box">
+              <div class="zone-title">A. Ruang Utama</div>
+              <div class="tables-cluster">
+                <div class="table-node available" data-table-id="A1">
+                  <span class="table-title">Meja A1</span>
+                  <span class="table-capacity">2 Kursi</span>
+                </div>
+                <div class="table-node available" data-table-id="A2">
+                  <span class="table-title">Meja A2</span>
+                  <span class="table-capacity">2 Kursi</span>
+                </div>
+                <div class="table-node selected" data-table-id="A3">
+                  <span class="table-title">Meja A3</span>
+                  <span class="table-capacity">2 Kursi</span>
+                </div>
+                <div class="table-node occupied" data-table-id="A4">
+                  <span class="table-title">Meja A4</span>
+                  <span class="table-capacity">Penuh (4 Kursi)</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Zone 2: Teras Luar -->
+            <div class="zone-box">
+              <div class="zone-title">B/C. Teras</div>
+              <div class="tables-cluster">
+                <div class="table-node available" data-table-id="B1">
+                  <span class="table-title">Meja B1</span>
+                  <span class="table-capacity">2 Kursi</span>
+                </div>
+                <div class="table-node occupied" data-table-id="B2">
+                  <span class="table-title">Meja B2</span>
+                  <span class="table-capacity">Penuh</span>
+                </div>
+                <div class="table-node available" data-table-id="C1">
+                  <span class="table-title">Meja C1</span>
+                  <span class="table-capacity">2 Kursi</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="door-indicator">&uarr; Pintu Masuk Utama Kafe</div>
+
+          <div class="legend-row">
+            <div class="legend-item"><span class="legend-dot kosong"></span> Kosong</div>
+            <div class="legend-item"><span class="legend-dot terpilih"></span> Dipilih</div>
+            <div class="legend-item"><span class="legend-dot penuh"></span> Penuh</div>
+          </div>
+        </div>
+
+        <!-- Table List View (Hidden by default, shown via toggle) -->
+        <div id="tableListView" style="display: none; margin-bottom: 18px;">
+          <div id="tableListItems" style="display:flex; flex-direction:column; gap:10px;"></div>
+        </div>
+
+        <!-- Summary & Confirmation Bar -->
+        <div class="selected-table-summary-card">
+          <div class="summary-table-head">
+            <div>
+              <h3 id="summaryTableTitle">Meja A3</h3>
+              <p id="summaryTableSub" class="summary-subtext">Kursi A3-1 & A3-2 • Ruang utama • Hari ini (16.00-18.00)</p>
+            </div>
+            <span>2/2 Kursi</span>
+          </div>
+          <button id="btnConfirmTable" class="btn-primary" style="width: 100%;">
+            Konfirmasi meja & lanjut pilih menu &rarr;
+          </button>
+        </div>
+      </section>
+
+      <!-- ===================================================================
+           SCREEN 3: KATALOG MENU
+           =================================================================== -->
+      <section id="view-menu" class="view-section">
+        <h1 class="greeting-title" style="margin-top:0;">Temukan kopi<br>favoritmu.</h1>
+
+        <!-- Selected Table Notice -->
+        <div class="selected-table-banner">
+          <span>Meja: <strong id="menuSelectedTableLabel">Meja A3 (2 tamu)</strong></span>
+          <button onclick="navigateTo('table')">Ganti Meja</button>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="menu-search-wrapper">
+          <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" id="menuSearchInput" class="search-input" placeholder="Cari kopi, minuman segar, atau cemilan..." />
+        </div>
+
+        <!-- Category Filters -->
+        <div class="category-filter-chips">
+          <button class="filter-chip active" data-filter="semua">Semua</button>
+          <button class="filter-chip" data-filter="dingin">Dingin 🧊</button>
+          <button class="filter-chip" data-filter="panas">Panas ☕</button>
+          <button class="filter-chip" data-filter="signature">Signature ⭐</button>
+          <button class="filter-chip" data-filter="cemilan">Cemilan 🥐</button>
+        </div>
+
+        <!-- Menu Grid -->
+        <div id="menuCatalogGrid" class="menu-catalog-grid">
+          <!-- Dynamically populated with min 12 menu items by app.js -->
+        </div>
+      </section>
+
+      <!-- ===================================================================
+           SCREEN 5: KERANJANG (CART & CHECKOUT)
+           =================================================================== -->
+      <section id="view-cart" class="view-section">
+        <h1 class="greeting-title" style="margin-top:0;">Keranjang</h1>
+
+        <!-- Delivery & Table Banner -->
+        <div class="order-location-banner">
+          <div class="order-loc-text">
+            <h4>Pesan dari rumah, antar ke meja di kafe</h4>
+            <p>Hari ini • 16.00-18.00 • Blackbird Lemahwangi</p>
+          </div>
+          <span class="table-tag-badge">Meja A3</span>
+        </div>
+
+        <!-- Cart Items List -->
+        <div class="section-header-flex" style="margin-top: 10px;">
+          <h4 style="font-size: 14px; font-weight: 700; color: var(--espresso);">Racikan pilihanmu</h4>
+          <span style="font-size: 11px; color: var(--text-muted);">Diseduh saat check-in</span>
+        </div>
+        <div id="cartItemsList" class="cart-items-wrapper">
+          <!-- Populated by app.js -->
+        </div>
+
+        <!-- Cross-Selling Snack Section -->
+        <div class="cross-sell-section">
+          <h4 style="font-size: 13px; font-weight: 700; color: var(--espresso); margin-bottom: 8px;">
+            Tambah cemilan pendamping? 🥐
+          </h4>
+          <div id="crossSellScroll" class="cross-sell-scroll">
+            <!-- Populated by app.js -->
+          </div>
+        </div>
+
+        <!-- Voucher Promo Banner -->
+        <div class="voucher-card">
+          <div class="voucher-text">
+            🎟️ <strong>KOPIPERTAMA</strong> • Hemat Rp10.000
+          </div>
+          <button class="voucher-btn">Terganti ✓</button>
+        </div>
+
+        <!-- Pricing Breakdown -->
+        <div class="pricing-breakdown-card">
+          <div class="breakdown-row">
+            <span>Subtotal</span>
+            <span id="cartSubtotal">Rp94.000</span>
+          </div>
+          <div class="breakdown-row discount">
+            <span>Diskon voucher</span>
+            <span id="cartDiscount">- Rp10.000</span>
+          </div>
+          <div class="breakdown-row">
+            <span>Biaya layanan</span>
+            <span id="cartServiceFee">Rp2.000</span>
+          </div>
+          <div class="breakdown-row total">
+            <span>Total pembayaran</span>
+            <span id="cartTotal">Rp86.000</span>
+          </div>
+        </div>
+
+        <!-- Payment Method Selector -->
+        <div class="payment-selector-card">
+          <div class="payment-brand">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#94532B" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+            <span>GoPay / QRIS Instant</span>
+          </div>
+          <span style="font-size: 12px; font-weight: 700; color: var(--primary);">Ganti &rsaquo;</span>
+        </div>
+
+        <!-- Checkout Button -->
+        <button id="btnCheckoutPay" class="btn-primary" style="width: 100%; padding: 14px; font-size: 15px;">
+          Pesan & Bayar • Rp86.000
+        </button>
+      </section>
+
+      <!-- ===================================================================
+           SCREEN 6: RESERVASI & STATUS PESANAN (TRACKING)
+           =================================================================== -->
+      <section id="view-tracking" class="view-section">
+        <div style="margin-bottom: 16px;">
+          <h1 class="greeting-title" style="margin: 0 0 4px 0;">Mejamu menanti,<br>Andrian.</h1>
+          <p style="font-size: 12px; color: var(--text-muted);">
+            Pesanan sudah dibayar. Barista akan mulai meracik kopi segar saat kamu tiba di kafe.
+          </p>
+        </div>
+
+        <!-- Ticket Card with QR Code -->
+        <div class="ticket-qr-card">
+          <span id="trackingStatusBadge" class="ticket-status-badge">Menunggu check-in</span>
+          <div id="trackingOrderCode" class="ticket-code">#KK-024</div>
+          <div id="trackingQrBox" class="qr-box">
+            <!-- Generated crisp SVG QR Code -->
+          </div>
+          <p class="qr-instruction">
+            Tunjukkan QR ini ke barista saat tiba di kasir untuk aktivasi pesanan ke Meja A3.
+          </p>
+        </div>
+
+        <!-- Stepper Timeline -->
+        <div class="order-stepper-card">
+          <h4 style="font-size: 14px; font-weight: 700; margin-bottom: 14px; color: var(--espresso);">
+            Perjalanan pesananmu
+          </h4>
+          <div id="orderStepperContainer">
+            <!-- Stepper items generated by app.js -->
+          </div>
+
+          <!-- Interactive Simulator for Demonstration -->
+          <div style="margin-top: 16px; padding-top: 12px; border-top: 1px dashed var(--border-light); text-align: center;">
+            <button class="btn-secondary" style="font-size: 11px; width: 100%;" onclick="simulateNextStatus()">
+              ⚡ Demo: Simulasikan Langkah Barista Selanjutnya
+            </button>
+          </div>
+        </div>
+
+        <!-- Items Summary in Tracking -->
+        <div class="pricing-breakdown-card">
+          <h4 style="font-size: 13px; font-weight: 700; margin-bottom: 10px; color: var(--espresso);">
+            Rincian pesanan
+          </h4>
+          <div id="trackingItemsSummary"></div>
+        </div>
+
+        <button class="btn-primary" style="width: 100%; margin-bottom: 10px;" onclick="showToast('Membuka rute Google Maps kafe...')">
+          📍 Lihat petunjuk menuju kafe
+        </button>
+        <button class="btn-secondary" style="width: 100%;" onclick="showToast('Menghubungi barista via WhatsApp...')">
+          💬 Hubungi staf kafe
+        </button>
+      </section>
+
+      <!-- ===================================================================
+           SCREEN 7: AKUN & PROFILE
+           =================================================================== -->
+      <section id="view-account" class="view-section">
+        <h1 class="greeting-title" style="margin-top:0;">Akun Saya</h1>
+
+        <div class="profile-header-card">
+          <div class="profile-avatar">A</div>
+          <div class="profile-meta">
+            <h3>Andrian</h3>
+            <p>Member Blackbird Coffeeshop</p>
+          </div>
+        </div>
+
+        <!-- Active Reservation Card -->
+        <div class="quick-booking-card" style="border-left: 4px solid var(--primary);" onclick="navigateTo('tracking')">
+          <div class="booking-card-head">
+            <span style="font-size: 11px; font-weight: 700; color: var(--primary);">RESERVASI AKTIF</span>
+            <span class="booking-badge">#KK-024</span>
+          </div>
+          <p style="font-size: 12px; font-weight: 700; color: var(--espresso);">Hari ini • 16.00-18.00 • Meja A3</p>
+          <p style="font-size: 11px; color: var(--text-muted); margin-top: 2px;">Klik untuk melihat QR Code & lacak pesanan &rarr;</p>
+        </div>
+
+        <!-- Loyalty Card Detail -->
+        <div class="loyalty-full-card">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <h4 style="font-size: 13px; font-weight: 700; color: var(--espresso);">Program Loyalitas Kopi</h4>
+            <span id="accountLoyaltyLabel" style="font-size: 11px; font-weight: 700; color: var(--primary);">4 dari 8</span>
+          </div>
+          <p style="font-size: 11px; color: var(--text-muted); margin-top: 2px;">
+            Kumpulkan 8 stempel untuk mendapatkan 1 cangkir kopi gratis pilihanmu.
+          </p>
+          <div id="accountStampsGrid" class="stamps-flex-row">
+            <!-- 8 stamp slots -->
+          </div>
+        </div>
+
+        <!-- Account Links Menu -->
+        <div class="account-links-group">
+          <div class="account-link-item" onclick="showToast('Menu profil')">
+            <span>👤 Edit Profil Saya</span>
+            <span>&rsaquo;</span>
+          </div>
+          <div class="account-link-item" onclick="navigateTo('tracking')">
+            <span>🎫 Reservasi Aktif (#KK-024)</span>
+            <span>&rsaquo;</span>
+          </div>
+          <div class="account-link-item" onclick="showToast('Riwayat pesanan sebelumnya')">
+            <span>📜 Riwayat Pesanan</span>
+            <span>&rsaquo;</span>
+          </div>
+          <div class="account-link-item" onclick="showToast('Daftar kopi favorit')">
+            <span>❤️ Menu Favorit</span>
+            <span>&rsaquo;</span>
+          </div>
+          <div class="account-link-item" onclick="showToast('Voucher KOPIPERTAMA aktif!')">
+            <span>🎁 Hadiah & Promo</span>
+            <span>&rsaquo;</span>
+          </div>
+          <div class="account-link-item" onclick="showToast('Pusat bantuan')">
+            <span>❓ Bantuan & FAQ</span>
+            <span>&rsaquo;</span>
+          </div>
+          <div class="account-link-item" style="color: #C0392B;" onclick="showToast('Keluar akun')">
+            <span>🚪 Keluar dari Akun</span>
+            <span>&rsaquo;</span>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Bottom Navigation Bar (Mobile App Style) -->
+    <nav class="bottom-app-bar">
+      <button class="nav-tab active" data-view="home">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        <span>Beranda</span>
+      </button>
+      <button class="nav-tab" data-view="table">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        <span>Meja</span>
+      </button>
+      <button class="nav-tab" data-view="menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+        <span>Menu</span>
+      </button>
+      <button class="nav-tab" data-view="cart">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        <span>Keranjang</span>
+        <span class="cart-count-badge">2</span>
+      </button>
+      <button class="nav-tab" data-view="account">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <span>Akun</span>
+      </button>
+    </nav>
+
+  </div>
+
+  <!-- =====================================================================
+       SCREEN 4: PRODUCT DETAIL & CUSTOMIZATION MODAL (BOTTOM SHEET)
+       ===================================================================== -->
+  <div id="customizationModal" class="modal-overlay">
+    <div class="modal-sheet">
+      <div class="modal-hero">
+        <img id="modalImg" class="modal-img" src="" alt="Kopi" />
+        <button id="modalCloseBtn" class="modal-close-btn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-title-row">
+          <h2 id="modalTitle" class="modal-title">Kopi Susu Gula Aren</h2>
+          <span id="modalBasePrice" class="modal-base-price">Rp28.000</span>
+        </div>
+        <p id="modalDesc" class="modal-desc"></p>
+
+        <!-- Pilihan Ukuran dengan Siluet Gelas Visual -->
+        <div class="option-section">
+          <h4 class="option-heading">Pilih ukuran cangkir</h4>
+          <div id="cupSizesContainer" class="cup-sizes-grid"></div>
+        </div>
+
+        <!-- Tingkat Manis -->
+        <div class="option-section">
+          <h4 class="option-heading">Tingkat kemanisan</h4>
+          <div id="sugarChipsContainer" class="radio-chips-grid"></div>
+        </div>
+
+        <!-- Pilihan Susu -->
+        <div class="option-section">
+          <h4 class="option-heading">Pilihan susu</h4>
+          <div id="milkChipsContainer" class="radio-chips-grid"></div>
+        </div>
+
+        <!-- Tambahan Espresso Shot -->
+        <div class="option-section">
+          <div class="toggle-row">
+            <div>
+              <h4 class="option-heading" style="margin-bottom:2px;">Tambahan espresso shot</h4>
+              <p style="font-size: 11px; color: var(--text-muted);">Extra +1 shot espresso (+Rp5.000)</p>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="toggleExtraEspresso">
+              <span class="slider"></span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Ringkasan Pilihan -->
+        <div class="selection-summary-box">
+          <div style="font-weight: 700; margin-bottom: 6px; color: var(--espresso);">Ringkasan Racikan:</div>
+          <div><span>Ukuran:</span> <span id="sumSize">Sedang - 350 ml</span></div>
+          <div><span>Manis:</span> <span id="sumSugar">Kurang manis (50%)</span></div>
+          <div><span>Susu:</span> <span id="sumMilk">Susu segar</span></div>
+          <div><span>Espresso:</span> <span id="sumEspresso">Normal</span></div>
+        </div>
+      </div>
+
+      <!-- Sticky Add-to-Cart Button -->
+      <div class="modal-sticky-footer">
+        <button id="btnAddToCart" class="btn-primary" style="width: 100%; padding: 13px; font-size: 14px;">
+          Tambah ke Keranjang • Rp32.000
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Element -->
+  <div id="toastNotice" class="toast-notice"></div>
+
+  <!-- App Script -->
+  <script src="app.js"></script>
+</body>
+</html>

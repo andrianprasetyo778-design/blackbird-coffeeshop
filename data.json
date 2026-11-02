@@ -1,0 +1,196 @@
+{
+  "coffeeshop": {
+    "name": "Blackbird Coffeeshop",
+    "location": "Jl. Menggerwangi, Kec. Lemahwangi, Kota Surakarta",
+    "currentUser": {
+      "name": "Andrian",
+      "tier": "Member Blackbird Coffeeshop",
+      "loyaltyStamps": 4,
+      "totalStamps": 8
+    }
+  },
+  "tables": [
+    { "id": "A1", "area": "Ruang Utama", "capacity": "2 Tamu", "seats": "Kursi A1-1 & A1-2", "status": "available", "coord": "Depan Bar" },
+    { "id": "A2", "area": "Ruang Utama", "capacity": "2 Tamu", "seats": "Kursi A2-1 & A2-2", "status": "available", "coord": "Dekat Jendela" },
+    { "id": "A3", "area": "Ruang Utama", "capacity": "2 Tamu", "seats": "Kursi A3-1 & A3-2", "status": "selected", "coord": "Tengah Cafe" },
+    { "id": "A4", "area": "Ruang Utama", "capacity": "4 Tamu", "seats": "Sofa A4 (1-4)", "status": "occupied", "coord": "Sudut Santai" },
+    { "id": "B1", "area": "Teras Luar", "capacity": "2 Tamu", "seats": "Kursi B1-1 & B1-2", "status": "available", "coord": "Outdoor Semi" },
+    { "id": "B2", "area": "Teras Luar", "capacity": "4 Tamu", "seats": "Kursi B2 (1-4)", "status": "occupied", "coord": "Smoking Area" },
+    { "id": "C1", "area": "Teras Luar", "capacity": "2 Tamu", "seats": "Kursi C1-1 & C1-2", "status": "available", "coord": "Balkon Taman" }
+  ],
+  "menu": [
+    {
+      "id": "m1",
+      "name": "Kopi Susu Gula Aren",
+      "category": "kopi",
+      "temp": "dingin",
+      "badge": "Best Seller",
+      "rating": "4.9",
+      "reviews": 182,
+      "price": 28000,
+      "description": "Espresso kental, susu segar creamy, dan gula aren asli racikan barista. Rasa klasik yang selalu pas di lidah.",
+      "image": "https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&w=600&q=80",
+      "isFavorite": true
+    },
+    {
+      "id": "m2",
+      "name": "Cappuccino",
+      "category": "kopi",
+      "temp": "panas",
+      "badge": "Signature",
+      "rating": "4.8",
+      "reviews": 94,
+      "price": 30000,
+      "description": "Perpaduan seimbang espresso premium dengan foam susu tebal bertekstur lembut dan taburan bubuk cokelat.",
+      "image": "https://images.unsplash.com/photo-1572442388796-11668ba67e53?auto=format&fit=crop&w=600&q=80",
+      "isFavorite": true
+    },
+    {
+      "id": "m3",
+      "name": "Iced Americano",
+      "category": "kopi",
+      "temp": "dingin",
+      "badge": "Pilihan Sehat",
+      "rating": "4.7",
+      "reviews": 110,
+      "price": 24000,
+      "description": "Double shot espresso dengan es batu kristal dan air dingin. Bersih, segar, dan menonjolkan aroma fruity beans.",
+      "image": "https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=600&q=80",
+      "isFavorite": false
+    },
+    {
+      "id": "m4",
+      "name": "Iced Mocha",
+      "category": "kopi",
+      "temp": "dingin",
+      "badge": "Favorit",
+      "rating": "4.8",
+      "reviews": 75,
+      "price": 32000,
+      "description": "Kombinasi kaya dark chocolate artisan, espresso berkualitas tinggi, dan susu segar dingin yang nikmat.",
+      "image": "https://images.unsplash.com/photo-1578314675249-a6910f80cc4e?auto=format&fit=crop&w=600&q=80",
+      "isFavorite": false
+    },
+    {
+      "id": "m5",
+      "name": "Caramel Macchiato",
+      "category": "kopi",
+      "temp": "dingin",
+      "badge": "Best Seller",
+      "rating": "4.9",
+      "reviews": 140,
+      "price": 34000,
+      "description": "Susu vanila segar dengan lapisan espresso tebal dan siraman saus karamel panggang manis gurih.",
+      "image": "https://images.unsplash.com/photo-1485808191679-5f86510681a2?auto=format&fit=crop&w=600&q=80",
+      "isFavorite": false
+    },
+    {
+      "id": "m6",
+      "name": "Vanilla Oat Latte",
+      "category": "kopi",
+      "temp": "panas",
+      "badge": "Plant-Based",
+      "rating": "4.8",
+      "reviews": 88,
+      "price": 36000,
+      "description": "Latte menggunakan oat milk creamy impor dengan ekstrak vanila Madagaskar dan espresso single-origin.",
+      "image": "https://images.unsplash.com/photo-1534778101976-62847782c213?auto=format&fit=crop&w=600&q=80",
+      "isFavorite": false
+    },
+    {
+      "id": "m7",
+      "name": "Matcha Latte Premium",
+      "category": "non-kopi",
+      "temp": "dingin",
+      "badge": "Signature",
+      "rating": "4.9",
+      "reviews": 160,
+      "price": 30000,
+      "description": "Bubuk Uji Matcha asli Jepang dipadukan dengan susu segar. Rasa earthy yang halus dengan manis alami.",
+      "image": "https://images.unsplash.com/photo-1536256263959-770b48d82b0a?auto=format&fit=crop&w=600&q=80",
+      "isFavorite": false
+    },
+    {
+      "id": "m8",
+      "name": "Earl Grey Milk Tea",
+      "category": "non-kopi",
+      "temp": "dingin",
+      "badge": "Segar",
+      "rating": "4.7",
+      "reviews": 62,
+      "price": 26000,
+      "description": "Seduhan teh hitam beraroma bergamot khas dipadukan dengan susu krim lembut dan es batu melimpah.",
+      "image": "https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=600&q=80",
+      "isFavorite": false
+    },
+    {
+      "id": "m9",
+      "name": "Artisan Butter Croissant",
+      "category": "cemilan",
+      "temp": "panas",
+      "badge": "Panggang Tiap Hari",
+      "rating": "4.9",
+      "reviews": 115,
+      "price": 22000,
+      "description": "Pastry Prancis renyah di luar, berongga lembut di dalam dengan aroma mentega murni Prancis yang wangi.",
+      "image": "https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=600&q=80",
+      "isFavorite": false
+    },
+    {
+      "id": "m10",
+      "name": "Cinnamon Sugar Roll",
+      "category": "cemilan",
+      "temp": "panas",
+      "badge": "Favorit",
+      "rating": "4.8",
+      "reviews": 92,
+      "price": 25000,
+      "description": "Roti gulung kayu manis hangat dengan lelehan cream cheese glaze di atasnya. Cocok dinikmati bersama kopi hitam.",
+      "image": "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=600&q=80",
+      "isFavorite": false
+    },
+    {
+      "id": "m11",
+      "name": "Truffle Fries with Dip",
+      "category": "cemilan",
+      "temp": "panas",
+      "badge": "Cemilan Gurih",
+      "rating": "4.8",
+      "reviews": 84,
+      "price": 28000,
+      "description": "Kentang goreng renyah dibaluri minyak truffle aromatik, taburan keju parmesan, dan saus garlic mayo.",
+      "image": "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=600&q=80",
+      "isFavorite": false
+    },
+    {
+      "id": "m12",
+      "name": "Fudgy Chocolate Brownie",
+      "category": "cemilan",
+      "temp": "panas",
+      "badge": "Manis",
+      "rating": "4.9",
+      "reviews": 103,
+      "price": 24000,
+      "description": "Brownie cokelat padat dan lumer dengan taburan almond panggang renyah.",
+      "image": "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=600&q=80",
+      "isFavorite": false
+    }
+  ],
+  "customizationDefaults": {
+    "sizes": [
+      { "id": "small", "name": "Kecil", "volume": "250 ml", "extraPrice": 0, "icon": "cup-small" },
+      { "id": "medium", "name": "Sedang", "volume": "350 ml", "extraPrice": 4000, "icon": "cup-medium", "default": true },
+      { "id": "large", "name": "Besar", "volume": "500 ml", "extraPrice": 8000, "icon": "cup-large" }
+    ],
+    "sugarLevels": [
+      { "id": "none", "name": "Tanpa gula (0%)" },
+      { "id": "less", "name": "Kurang manis (50%)", "default": true },
+      { "id": "normal", "name": "Normal (100%)" }
+    ],
+    "milks": [
+      { "id": "fresh", "name": "Susu segar", "extraPrice": 0, "default": true },
+      { "id": "oat", "name": "Oat milk", "extraPrice": 6000 }
+    ],
+    "extraEspressoPrice": 5000
+  }
+}
